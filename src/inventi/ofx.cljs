@@ -1,5 +1,14 @@
-(ns ofx
+(ns inventi.ofx
   (:require [clojure.string :as st]))
+
+(defn ofx-date [date]
+  (st/replace date #"-" ""))
+
+(defn now []
+  (let [d (js/Date.)]
+    (str (.getFullYear d)
+         (inc (.getMonth d))
+         (.getDate d))))
 
 (defn ofx [trn-list]
   (str
@@ -23,7 +32,7 @@
       "<SEVERITY>INFO\n"
       "<MESSAGE>OK\n"
       "</STATUS>\n"
-      "<DTSERVER>20160902151723.000[3]\n"
+      "<DTSERVER>" (now) "\n"
       "<LANGUAGE>ENG\n"
       "<INTU.BID>3000\n"
       "</SONRS>\n"
@@ -38,7 +47,7 @@
       "<MESSAGE>OK\n"
       "</STATUS>\n"
       "<STMTRS>\n"
-      "<CURDEF>USD\n"
+      "<CURDEF>EUR\n"
 
       "<BANKACCTFROM>\n"
       "<BANKID>1\n"
@@ -52,7 +61,7 @@
 
       "<LEDGERBAL>\n"
       "<BALAMT>0.00\n"
-      "<DTASOF>20160902130000.000 [3]\n"
+      "<DTASOF>20160902\n"
       "</LEDGERBAL>\n"
       "</STMTRS>\n"
       "</STMTTRNRS>\n"
@@ -61,15 +70,15 @@
 
 (defn trn-list [start end trns]
   (str
-    "<DTSTART>" start "\n"
-    "<DTEND>" end "\n"
+    "<DTSTART>" (ofx-date start) "\n"
+    "<DTEND>" (ofx-date end) "\n"
     trns))
 
 (defn trn->qfx [{:keys [type date id amount payee memo]}]
   (str
     "<STMTTRN>\n"
     "<TRNTYPE>" (st/upper-case (name type)) "\n"
-    "<DTPOSTED>" date "\n"
+    "<DTPOSTED>" (ofx-date date) "\n"
     "<FITID>" id "\n"
     "<TRNAMT>" amount "\n"
     "<NAME>"payee "\n"

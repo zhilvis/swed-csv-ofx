@@ -1,5 +1,5 @@
 ;; clone from clojure.data.csv with cljs changes
-(ns csv
+(ns inventi.csv
   (:require [cljs.reader :refer [push-back-reader read-char unread]])
   (:import goog.string.StringBuffer))
 
