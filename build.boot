@@ -4,7 +4,6 @@
                   [adzerk/boot-cljs-repl     "0.1.9"]
                   [hoplon/boot-hoplon        "0.2.2"]
                   [hoplon/hoplon             "6.0.0-alpha16"]
-                  [hoplon/ui  "0.0.1-SNAPSHOT"]
                   [org.clojure/clojure       "1.8.0"]
                   [org.clojure/clojurescript "1.9.93"]
                   [pandeiro/boot-http  "0.7.3"]]
