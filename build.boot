@@ -30,7 +30,7 @@
     (cljs)
     (serve :port 8001)))
 
-(deftask prod
+(deftask build
   "Build sign-widget for production deployment."
   []
   (comp
