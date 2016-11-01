@@ -36,7 +36,15 @@
   (comp
     (hoplon)
     (cljs :optimizations :advanced)
-    (sift :include #{#"main.js"})
     (target :dir #{"target"})))
+
+(deftask host
+  "serve app in heroku"
+  []
+  (set-env!
+    :resource-paths #{"target"})
+  (comp
+    (serve :port (Integer. (get (System/getenv) "PORT" 8000)))
+    (wait)))
 
 
