@@ -1,1 +1,1 @@
-web: boot serveapp
+web: boot host
