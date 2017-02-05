@@ -9,7 +9,7 @@
                   [org.clojure/clojurescript "1.9.93"]
                   [pandeiro/boot-http  "0.7.3"]]
 
-  :source-paths #{"src"}
+  :source-paths #{"src" "test"}
   :resource-paths  #{"assets"})
 
 (require

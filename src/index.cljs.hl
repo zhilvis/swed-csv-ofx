@@ -30,17 +30,9 @@
     (set! (.-onload r) #(reset! file (.-result r)))
     (.readAsText r f)))
 
-(html
-  (head (link :href  "style.css" :rel  "stylesheet"))
-  (body
-    (input :type "file" :change #(read-file! (.. % -target -files)))
-    (if-tpl ofx
-            (a :download ofx-file-name
-               :href (cell= (.createObjectURL js/URL ofx))
-               (text "Download ~{ofx-file-name} file")))
-
-    (for-tpl
-        [t (cell= (:trx stmt))]
+(defelem statement [{:keys [statement]} _]
+  (for-tpl
+        [t (cell= (:trx statement))]
         (span
           (p
             (span :class "amount" (cell= (:amount t)))
@@ -50,4 +42,16 @@
              (br)
              (cell= (:memo t))
              (br)
-             (cell= (:orig t)))))))
+             (cell= (:orig t))
+             (br)
+             (cell= (:id t))))))
+
+(html
+  (head (link :href  "style.css" :rel  "stylesheet"))
+  (body
+    (input :type "file" :change #(read-file! (.. % -target -files)))
+    (if-tpl ofx
+            (a :download ofx-file-name
+               :href (cell= (.createObjectURL js/URL ofx))
+               (text "Download ~{ofx-file-name} file")))
+    (statement :statement stmt)))
