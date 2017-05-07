@@ -19,6 +19,10 @@
    :date (card-date memo)
    :payee (card-memo memo)})
 
+(defn cash-trn [memo]
+  {:memo (card-memo memo)
+   :payee (card-memo memo)})
+
 (defmulti parse-memo #(first (st/split % #" ")))
 
 (defmethod parse-memo :default [mem]
@@ -45,8 +49,6 @@
 (defmethod parse-memo "VP" [memo]
   {:payee "Stocks" :memo memo})
 
-
-
 (defmethod parse-memo "PIRKINYS" [memo]
   (card-trn memo))
 
@@ -54,7 +56,7 @@
   (card-trn memo))
 
 (defmethod parse-memo "GRYNIEJI" [memo]
-  (assoc (card-trn memo) :payee "GRYNIEJI"))
+  (assoc (cash-trn memo) :payee "GRYNIEJI"))
 
 
 
