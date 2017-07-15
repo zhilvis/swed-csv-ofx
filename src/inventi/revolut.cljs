@@ -20,13 +20,13 @@
     (unparse id-dt)))
 
 (defn trn->map [[date memo amount-out amount-in _ _ balance]]
-  {:type (if amount-out :debit :credit)
+  {:type (if (empty? amount-in) :debit :credit)
    :date (stmt-date date)
    :id (->
          (str (stmt-id date) amount-out amount-in balance)
          (st/replace #"\," "")
          (st/replace #"\." ""))
-   :amount (if amount-out (str "-" amount-out) amount-in)
+   :amount (if (empty? amount-in) (str "-" amount-out) amount-in)
    :payee memo
    :memo memo
    :orig memo})

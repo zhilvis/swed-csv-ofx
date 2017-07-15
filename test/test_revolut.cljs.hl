@@ -9,6 +9,7 @@
 (def f
   (str
     "Completed Date;Reference;Paid Out  (EUR);Paid In  (EUR);Exchange Out;Exchange In; Balance  (EUR)\r\n"
+    "26 January 2017;Top-Up by *3030;;200;;;1,526.84\r\n"
     "25 January 2017;Amazon Services-Kindle;9.15;;USD 9.81;;1,326.84\r\n"
     "24 January 2017;Maxima Lt, X-422 Gedim;0.52;;;;1,335.99\r\n"
     "24 January 2017;Maxima Lt, X-422 Gedim;5.79;;;;1,336.51\r\n"
