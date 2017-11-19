@@ -3,6 +3,7 @@
                 [inventi.core :as core]
                 [inventi.ofx :as ofx]
                 [inventi.revolut :as revolut]
+                [inventi.n26 :as n26]
                 [clojure.string :as st]))
 
 (defc file nil)
@@ -13,7 +14,9 @@
     (if (st/starts-with? file "Completed Date")
       (revolut/parse-stmt
         (csv/read-csv file :separator \; :quote \"))
-      (core/parse-stmt (csv/read-csv file)))))
+      (if (st/starts-with? file "\"Date\"")
+        (n26/parse-stmt (csv/read-csv file :separator \, :quote \"))
+        (core/parse-stmt (csv/read-csv file))))))
 
 (defc= ofx
   (when stmt
