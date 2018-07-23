@@ -1,5 +1,5 @@
 (set-env!
-  :dependencies '[[adzerk/boot-cljs          "1.7.228-1"]
+  :dependencies '[[adzerk/boot-cljs          "2.1.4"]
                   [adzerk/boot-reload        "0.4.11"]
                   [adzerk/boot-cljs-repl     "0.1.9"]
                   [hoplon/boot-hoplon        "0.2.2"]
