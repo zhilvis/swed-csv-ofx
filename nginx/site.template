@@ -1,0 +1,14 @@
+server {
+    listen       ${PORT};
+    server_name  localhost;
+
+    location /health/self {
+      access_log off;
+      return 200;
+    }
+
+    location / {
+      root /usr/share/nginx/html;
+      try_files $uri /index.html;
+    }
+}

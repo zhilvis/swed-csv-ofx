@@ -1,12 +1,8 @@
-FROM openjdk:8u171
+FROM nginx:1.13.1
 
-RUN useradd -ms /bin/bash boot
-     
-RUN curl -s -L https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh -o /usr/local/bin/boot && \
-    chmod +x /usr/local/bin/boot
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/site.template /etc/nginx/conf.d/site.template
 
-WORKDIR /home/boot
-USER boot
-COPY . /home/boot/
-RUN boot build && boot serve
-CMD boot host
+ADD target /usr/share/nginx/html/
+#ENV uri "\$uri"
+CMD /bin/bash -c "uri='\$uri' envsubst < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/default.conf && cat /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
