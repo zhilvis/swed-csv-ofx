@@ -9,14 +9,15 @@
 (def f
   (str
     "Completed Date;Reference;Paid Out  (EUR);Paid In  (EUR);Exchange Out;Exchange In; Balance  (EUR)\r\n"
-    "26 January 2017;Top-Up by *3030;;200;;;1,526.84\r\n"
-    "25 January 2017;Amazon Services-Kindle;9.15;;USD 9.81;;1,326.84\r\n"
-    "24 January 2017;Maxima Lt, X-422 Gedim;0.52;;;;1,335.99\r\n"
-    "24 January 2017;Maxima Lt, X-422 Gedim;5.79;;;;1,336.51\r\n"
-    "23 January 2017;Coffee 1, Kavos Baras;1.80;;;;1,342.30\r\n"
-    "23 January 2017;Dailu;5.20;;;;1,344.10\r\n"
-    "23 January 2017;Drogas 3;2.19;;;;1,349.30\r\n"
-    "20 January 2017;Maxima Lt, X-097 Minda;6.79;;;;1,351.49\r\n"))
+    "2017 January 26;Top-Up by *3030;;200;;;1,526.84\r\n"
+    "2017 January 25;Amazon Services-Kindle;9.15;;USD 9.81;;1,326.84\r\n"
+    "2017 January 24;Maxima Lt, X-422 Gedim;0.52;;;;1,335.99\r\n"
+    "2017 January 24;Maxima Lt, X-422 Gedim;5.79;;;;1,336.51\r\n"
+    "2017 January 23;Coffee 1, Kavos Baras;1.80;;;;1,342.30\r\n"
+    "2017 January 23;Dailu;5.20;;;;1,344.10\r\n"
+    "2017 January 23;Drogas 3;2.19;;;;1,349.30\r\n"
+    "2017 January 23;Maxima Lt, X-097 Minda;6.79;;;;1,351.49\r\n"
+    "November 30;To Gabriele Kybartaite;10,00;;;;134,95\r\n"))
 
 (reset! index/file-name "test-revolut-data.csv")
 (reset! index/file f)

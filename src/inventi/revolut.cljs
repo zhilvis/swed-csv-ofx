@@ -1,22 +1,28 @@
 (ns inventi.revolut
   (:require [clojure.string :as st]
+            [cljs-time.core :refer [now year]]
             [cljs-time.coerce :as dt]
             [cljs-time.format :refer [formatter parse unparse]]))
 
-(def revolut-dt  (formatter  "dd MMMM yyyy"))
+(def revolut-dt  (formatter  "yyyy MMMM dd"))
 (def stmt-dt (formatter "yyyy-MM-dd"))
 (def id-dt (formatter "yyyyMMdd"))
 
+(defn parse-dt [d]
+  (if (js/isNaN (first d))
+    (parse revolut-dt (str (year (now)) d))
+    (parse revolut-dt d)))
+
 (defn stmt-date [d]
   (->>
-    d
-    (parse revolut-dt)
-    (unparse stmt-dt)))
+      d
+      parse-dt
+      (unparse stmt-dt)))
 
 (defn stmt-id [d]
   (->>
     d
-    (parse revolut-dt)
+    parse-dt
     (unparse id-dt)))
 
 (defn trn->map [[date memo amount-out amount-in _ _ balance]]
