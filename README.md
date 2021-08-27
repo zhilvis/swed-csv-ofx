@@ -10,3 +10,8 @@ To use it you do the following:
 4. Import downloaded OFX file to YNAB.
 
 Currently it works with LTSwedbank, Revolut and N26 CSV formats. Format is detected automatically.
+
+## Development how to
+Start docker: `docker run -p 8001:8001 -it -v $(pwd):/home/boot/repo docker.io/zhilvis/boot-base bash`, start boot in dev mode: `cd repo;boot dev`
+
+Open browser with `http://localhost:8001/` once the environment has started
