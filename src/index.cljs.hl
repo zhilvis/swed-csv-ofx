@@ -4,6 +4,7 @@
                 [inventi.ofx :as ofx]
                 [inventi.revolut :as revolut]
                 [inventi.n26 :as n26]
+                [inventi.citadele :as citadele]
                 [clojure.string :as st]))
 
 (defc file nil)
@@ -11,12 +12,15 @@
 
 (defc= stmt
   (when file
-    (if (st/starts-with? file "Completed Date")
+    (if (st/starts-with? file "Type")
       (revolut/parse-stmt
-        (csv/read-csv file :separator \; :quote \"))
-      (if (st/starts-with? file "\"Date\"")
-        (n26/parse-stmt (csv/read-csv file :separator \, :quote \"))
-        (core/parse-stmt (csv/read-csv file))))))
+        (csv/read-csv file :separator \, :quote \"))
+      (if (st/starts-with? file "Citadele")
+        (citadele/parse-stmt
+          (csv/read-csv file :separator \, :quote \"))
+        (if (st/starts-with? file "\"Date\"")
+          (n26/parse-stmt (csv/read-csv file :separator \, :quote \"))
+          (core/parse-stmt (csv/read-csv file)))))))
 
 (defc= ofx
   (when stmt

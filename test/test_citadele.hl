@@ -1,0 +1,30 @@
+(page "test-citadele.html"
+  (:require [hoplon.app-pages._index_DOT_html :as index]
+            [inventi.csv :as csv]
+            [inventi.ofx :as ofx]
+            [inventi.revolut :as core]
+            [cljs-time.coerce :as dt]
+            [cljs-time.format :refer [formatter parse]]))
+
+(def f
+  (str
+    "Citadele,,,,,\r\n"
+    "01.01.2021,PIRKINYS,28/12/2020 420845******9176 MCC-5511 REF: 741316,CITYBEE VILNIUS GB 31758141,ET210018J67WK8,-0.14\r\n"
+    "01.01.2021,PIRKINYS,29/12/2020 420845******9176 MCC-5812 REF: 737577,Wolt Helsinki FI,ET210018J67YV3,-20.47\r\n"
+    "01.01.2021,KORTELES MOKESTIS,420845******9176,,ET21001RKXSQ80,-1.49\r\n"
+    "06.01.2021,PIRKINYS,31/12/2020 420845******9176 MCC-5311 REF: 796622,RIMI KAREIVIU VILNIUS LT 1178112S,ET21006ZB6HR8Q,-0.79\r\n"
+    "06.01.2021,PIRKINYS,30/12/2020 420845******9176 MCC-5499 REF: 805914,Bobos darzas Vilnius LT SZA73225,ET210068Z3KVYF,-28.20\r\n"
+    "31.01.2021,GAUTINOS PALUKANOS,,Iskaitymo data: 01.02.2021,70100001546758-20210131,1.31\r\n"
+    "01.02.2021,KORTELES MOKESTIS,420845******9176,,ET210329LZ2ZRC,-1.49\r\n"
+    "14.02.2021,ISEINANTIS MOMENTINIS MOKEJIMA,Pavedimas,Testas  N26 BANK GMBH DE40100110012624324879,FT210452BCYP,-5.00\r\n"
+    "02.03.2021,SEPA MOKEJIMAS,97173079019,Whatever Ltd  GORENJSKA BANKA DD KRANJ SI56070000002199468,FT2105818VJZ,-50.00\r\n"
+    "09.04.2021,IEINANTIS MOMENTINIS MOKEJIMAS,Papildymas,TESTAS TESTUKAITIS  HABALT22 LT697300010070459808,FT21099QL97T,50.00\r\n"))
+
+(reset! index/file-name "test-citadele-data.csv")
+(reset! index/file f)
+
+(html
+  (head (link :href  "style.css" :rel  "stylesheet"))
+  (body
+    (index/statement :statement index/stmt)))
+

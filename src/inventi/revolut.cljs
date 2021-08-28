@@ -4,7 +4,7 @@
             [cljs-time.coerce :as dt]
             [cljs-time.format :refer [formatter parse unparse]]))
 
-(def revolut-dt  (formatter  "yyyy MMMM dd"))
+(def revolut-dt  (formatter  "yyyy-MM-dd hh:mm:ss"))
 (def stmt-dt (formatter "yyyy-MM-dd"))
 (def id-dt (formatter "yyyyMMdd"))
 
@@ -25,22 +25,26 @@
     parse-dt
     (unparse id-dt)))
 
-(defn trn->map [[date memo amount-out amount-in _ _ balance]]
-  {:type (if (empty? amount-in) :debit :credit)
+;Type,Started Date,Completed Date,Description,Amount,Fee,Currency,Original Amount,Original Currency,Settled Amount,Settled Currency,State,Balance
+(defn trn->map [[_ date _ memo amount _ _ _ _ _ _ _ balance]]
+  {:type (if (st/starts-with? amount "-") :debit :credit)
    :date (stmt-date date)
    :id (->
-         (str (stmt-id date) amount-out amount-in balance)
+         (str (stmt-id date) amount balance)
          (st/replace #"\," "")
          (st/replace #"\." ""))
-   :amount (if (empty? amount-in) (str "-" amount-out) amount-in)
+   :amount amount
    :payee memo
    :memo memo
    :orig memo})
 
+(defn completed? [[_ _ _ _ _ _ _ _ _ _ _ state]]
+  (= state "Completed"))
+
 (defn parse-stmt [csv]
-  (let [stmt (rest csv)
-        [from] (first stmt)
-        [to] (last stmt)]
+  (let [stmt (filter completed? (rest csv))
+        [_ from] (first stmt)
+        [_ to] (last stmt)]
     {:from from
      :to to
      :trx (doall (map trn->map stmt))}))
