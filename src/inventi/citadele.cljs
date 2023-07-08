@@ -4,23 +4,14 @@
               [cljs-time.format :refer [formatter parse unparse]]))
 
 
-(def citadele-dt  (formatter  "dd.MM.yyyy"))
-(def stmt-dt (formatter "yyyy-MM-dd"))
-
-(defn stmt-date [d]
-  (->>
-    d
-    (parse citadele-dt)
-    (unparse stmt-dt)))
-
-;01.01.2021,PIRKINYS,28/12/2020 420845******9176 MCC-5511 REF: 741316,CITYBEE VILNIUS GB 31758141,ET210018J67WK8,-0.14
-(defn trn->map [[date trx-type payment-ref payee trx-id amount]]
+;"2023-07-01,ET23182H54T58Q,\"Taste map Vilnius LT SZA58234\",-7.5\r\n"
+(defn trn->map [[date trx-id payment-ref amount]]
   {:type (if (st/starts-with? amount "-") :debit :credit)
-   :date (stmt-date (str date))
+   :date (str date)
    :id trx-id
    :amount amount
-   :payee payee
-   :memo (str trx-type " " payment-ref)
+   :payee (st/join " " (drop-last 3 (st/split payment-ref #"[ .]")))
+   :memo payment-ref
    :orig payment-ref})
 
 (defn parse-stmt [csv]

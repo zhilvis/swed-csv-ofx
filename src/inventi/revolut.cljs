@@ -25,8 +25,8 @@
     parse-dt
     (unparse id-dt)))
 
-;Type,Started Date,Completed Date,Description,Amount,Fee,Currency,Original Amount,Original Currency,Settled Amount,Settled Currency,State,Balance
-(defn trn->map [[_ date _ memo amount _ _ _ _ _ _ _ balance]]
+;Type,Product,Started Date,Completed Date,Description,Amount,Fee,Currency,State,Balance
+(defn trn->map [[_ _ date _ memo amount _ _ _ balance]]
   {:type (if (st/starts-with? amount "-") :debit :credit)
    :date (stmt-date date)
    :id (->
@@ -38,8 +38,8 @@
    :memo memo
    :orig memo})
 
-(defn completed? [[_ _ _ _ _ _ _ _ _ _ _ state]]
-  (= state "Completed"))
+(defn completed? [[_ _ _ _ _ _ _ _ state]]
+  (= state "COMPLETED"))
 
 (defn parse-stmt [csv]
   (let [stmt (filter completed? (rest csv))

@@ -45,12 +45,16 @@
             (span :class "amount" (cell= (:amount t)))
             (span :class "date" (cell= (:date t)))
              (br)
+             (b "payee:  ")
              (cell= (:payee t))
              (br)
+             (b "memo:  ")
              (cell= (:memo t))
              (br)
+             (b "original text:  ")
              (cell= (:orig t))
              (br)
+             (b "ID:  ")
              (cell= (:id t))))))
 
 (html

@@ -8,14 +8,15 @@
 
 (def f
   (str
-    "Type,Started Date,Completed Date,Description,Amount,Fee,Currency,Original Amount,Original Currency,Settled Amount,Settled Currency,State,Balance\r\n"
-    "Card Payment,2021-07-11 12:07:22,,Laikinosios Stoties Metro,-5.00,0.00,EUR,-5.00,EUR,,,Pending,\r\n"
-    "Card Payment,2021-07-10 14:33:59,2021-07-11 09:20:21,Kfc Gediminooo,-15.70,0.00,EUR,-15.70,EUR,15.70,EUR,Completed,132.23\r\n"
-    "Card Payment,2021-07-10 14:33:45,,Kfc Gedimino,-15.70,0.00,EUR,-15.70,EUR,,,Declined,\r\n"
-    "Card Payment,2021-07-10 14:27:08,2021-07-11 09:16:52,\"Silas Pc, Uab Eiginta\",-3.88,0.00,EUR,-3.88,EUR,3.88,EUR,Completed,147.93\r\n"
-    "Transfer,2021-07-07 19:53:10,2021-07-07 19:53:10,To John Woo,-25.00,0.00,EUR,-25.00,EUR,,,Completed,239.53\r\n"
-    "Topup,2021-06-16 19:21:11,2021-06-16 19:21:11,Payment from Jonas Jonaitis,300.00,0.00,EUR,30.00,EUR,300.00,EUR,Completed,390.70\r\n"
-    "Transfer,2021-06-01 12:43:39,2021-06-01 12:43:39,From Quentin Tarantino,13.00,0.00,EUR,13.00,EUR,,,Completed,251.40\r\n"))
+    "Type,Product,Started Date,Completed Date,Description,Amount,Fee,Currency,State,Balance\r\n"
+    "CARD_PAYMENT,Current,2021-06-30 17:35:04,2021-07-01 08:06:47,Wolt,-15.88,0.00,EUR,COMPLETED,227.77\r\n"
+    "TRANSFER,Current,2021-07-02 11:33:03,2021-07-02 11:33:03,To Gabriele Kybartaite,-10.00,0.00,EUR,COMPLETED,171.67\r\n"
+    "TRANSFER,Current,2021-07-02 11:38:10,2021-07-02 11:38:10,From Gabriele Kybartaite,10.00,0.00,EUR,COMPLETED,181.67\r\n"
+    "TOPUP,Current,2021-07-04 11:46:00,2021-07-04 11:46:00,Payment from <C5><BD>ilvinas Kybartas,500.00,0.00,EUR,COMPLETED,681.67\r\n"
+    "CARD_REFUND,Current,2021-07-05 00:00:00,2021-07-06 10:15:19,Refund from Pagrindinis.barbora.lt,0.34,0.00,EUR,COMPLETED,320.53\r\n"
+    "CARD_PAYMENT,Current,2022-08-22 07:59:28,,Uscustoms Esta Appl Pm,-21.01,0.00,EUR,PENDING,\r\n"
+    "CARD_PAYMENT,Current,2022-08-21 08:22:16,2022-08-22 09:54:55,www.aboutyou.lt,-387.20,0.00,EUR,COMPLETED,534.91\r\n"
+    "CARD_PAYMENT,Current,2022-08-21 16:38:38,2022-08-22 12:15:47,Rimi Zirmunu,-2.77,0.00,EUR,COMPLETED,532.14\r\n"))
 
 (reset! index/file-name "test-revolut-data.csv")
 (reset! index/file f)
