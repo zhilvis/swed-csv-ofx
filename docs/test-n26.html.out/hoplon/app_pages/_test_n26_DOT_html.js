@@ -1,0 +1,20 @@
+// Compiled by ClojureScript 1.9.93 {:static-fns true, :optimize-constants true}
+goog.provide('hoplon.app_pages._test_n26_DOT_html');
+goog.require('cljs.core');
+goog.require('hoplon.app_pages._index_DOT_html');
+goog.require('javelin.core');
+goog.require('inventi.csv');
+goog.require('hoplon.core');
+goog.require('inventi.ofx');
+goog.require('inventi.revolut');
+goog.require('cljs_time.coerce');
+goog.require('cljs_time.format');
+hoplon.app_pages._test_n26_DOT_html.f = [cljs.core.str("\"Date\",\"Payee\",\"Account number\",\"Transaction type\",\"Payment reference\",\"Category\",\"Amount (EUR)\",\"Amount (Foreign Currency)\",\"Type Foreign Currency\",\"Exchange Rate\"\r\n"),cljs.core.str("\"2017-03-03\",\"MAXIMA LT, X-860\",\"\",\"MasterCard Payment\",\"\",\"Shopping\",\"-5.97\",\"-5.97\",\"EUR\",\"1.0\"\r\n"),cljs.core.str("\"2017-03-04\",\"PONAS DVIRATIS\",\"\",\"MasterCard Payment\",\"\",\"Leisure & Entertainment\",\"-36.0\",\"-36.0\",\"EUR\",\"1.0\"\r\n"),cljs.core.str("\"2017-03-05\",\"MANO KEPYKLELE\",\"\",\"MasterCard Payment\",\"\",\"Food & Groceries\",\"-2.0\",\"-2.0\",\"EUR\",\"1.0\"\r\n"),cljs.core.str("\"2017-03-06\",\"MAXIMA LT, X-477\",\"\",\"MasterCard Payment\",\"\",\"Shopping\",\"-17.63\",\"-17.63\",\"EUR\",\"1.0\"\r\n"),cljs.core.str("\"2017-03-06\",\"UAB CESTA\",\"\",\"MasterCard Payment\",\"\",\"Food & Groceries\",\"-0.95\",\"-0.95\",\"EUR\",\"1.0\"\r\n"),cljs.core.str("\"2017-03-06\",\"CRUSTUM MANO KEPYKLELE\",\"\",\"MasterCard Payment\",\"\",\"Food & Groceries\",\"-2.7\",\"-2.7\",\"EUR\",\"1.0\"\r\n")].join('');
+(cljs.core.reset_BANG_.cljs$core$IFn$_invoke$arity$2 ? cljs.core.reset_BANG_.cljs$core$IFn$_invoke$arity$2(hoplon.app_pages._index_DOT_html.file_name,"test-n26-data.csv") : cljs.core.reset_BANG_.call(null,hoplon.app_pages._index_DOT_html.file_name,"test-n26-data.csv"));
+(cljs.core.reset_BANG_.cljs$core$IFn$_invoke$arity$2 ? cljs.core.reset_BANG_.cljs$core$IFn$_invoke$arity$2(hoplon.app_pages._index_DOT_html.file,hoplon.app_pages._test_n26_DOT_html.f) : cljs.core.reset_BANG_.call(null,hoplon.app_pages._index_DOT_html.file,hoplon.app_pages._test_n26_DOT_html.f));
+cljs.core.print.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([hoplon.app_pages._test_n26_DOT_html.f], 0));
+hoplon.core.html.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([(function (){var G__15193 = (hoplon.core.link.cljs$core$IFn$_invoke$arity$4 ? hoplon.core.link.cljs$core$IFn$_invoke$arity$4(cljs.core.cst$kw$href,"style.css",cljs.core.cst$kw$rel,"stylesheet") : hoplon.core.link.call(null,cljs.core.cst$kw$href,"style.css",cljs.core.cst$kw$rel,"stylesheet"));
+return (hoplon.core.head.cljs$core$IFn$_invoke$arity$1 ? hoplon.core.head.cljs$core$IFn$_invoke$arity$1(G__15193) : hoplon.core.head.call(null,G__15193));
+})(),(function (){var G__15194 = hoplon.app_pages._index_DOT_html.statement.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.cst$kw$statement,hoplon.app_pages._index_DOT_html.stmt], 0));
+return (hoplon.core.body.cljs$core$IFn$_invoke$arity$1 ? hoplon.core.body.cljs$core$IFn$_invoke$arity$1(G__15194) : hoplon.core.body.call(null,G__15194));
+})()], 0));
